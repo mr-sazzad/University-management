@@ -1,0 +1,11 @@
+# Ignore all files inside the "node_modules" directory
+node_modules/
+
+# Ignore the "build" directory
+build/
+
+# Ignore the "dist" directory
+dist/
+
+# Ignore any file ending with ".config.js"
+*.config.js

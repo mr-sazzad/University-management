@@ -1,0 +1,13 @@
+# Ignore directories
+# Excluding node_modules directory
+node_modules/
+
+# Excluding dist directory
+dist/
+
+# Excluding build directory
+build/
+
+# Ignore configuration files
+.eslintrc          # Excluding ESLint configuration file
+.prettierrc        # Excluding Prettier configuration file
