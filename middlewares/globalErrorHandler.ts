@@ -1,15 +1,16 @@
-import { NextFunction, Request, Response } from "express";
+import { ErrorRequestHandler } from "express";
 import apiErrors from "../errors/apiErrors";
 import validationError from "../errors/validationError";
-import config from "../src/config/index";
+import { default as config, default as node_env } from "../src/config/index";
 import { IGenericErrorMessage } from "../src/interfaces/error";
+import { errorLogger } from "../src/winston/logger";
 
-const globalErrorHandler = (
-  err,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
+  if (node_env && node_env.node_env === "development") {
+    console.log("globalErrorHandler ~ ", err);
+  } else {
+    errorLogger.error("globalErrorHandler ~ ", err);
+  }
   let statusCode = 500;
   let message = "something went wrong !";
   let errorMessages: IGenericErrorMessage[] = [];
