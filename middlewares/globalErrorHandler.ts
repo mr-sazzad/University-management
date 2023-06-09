@@ -11,8 +11,8 @@ const globalErrorHandler = (
   const error = "something went wrong !";
   const errorMessages: IGenericErrorMessage[] = [];
 
-  if (err?.name === "ValidationError") {
-  }
+  // if (err?.name === "ValidationError") {
+  // }
 
   res.status(statusCode).json({
     success: false,
