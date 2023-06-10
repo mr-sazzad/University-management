@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 import { IAcademicSemester, IAcademicSemesterModel } from "./semesterInterface";
 
-const months = [
+const Months = [
   "January",
   "February",
   "March",
@@ -35,12 +35,12 @@ const academicSemesterSchema = new Schema<IAcademicSemester>(
     startMonth: {
       type: String,
       required: true,
-      enum: months
+      enum: Months
     },
     endMonth: {
       type: String,
       required: true,
-      enum: months
+      enum: Months
     }
   },
   {
