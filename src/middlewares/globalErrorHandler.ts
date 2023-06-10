@@ -1,7 +1,9 @@
 import { ErrorRequestHandler } from "express";
+import { ZodError } from "zod";
 import { default as config, default as node_env } from "../config/index";
 import apiErrors from "../errors/apiErrors";
 import validationError from "../errors/validationError";
+import zodError from "../errors/zosError";
 import { IGenericErrorMessage } from "../interfaces/error";
 import { errorLogger } from "../winston/logger";
 
@@ -27,6 +29,10 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     statusCode = err?.statusCode;
     message = err?.message;
     errorMessages = err?.message ? [{ path: "", message: err?.message }] : [];
+  } else if (err instanceof ZodError) {
+    const simplifiedError = zodError(err);
+    (statusCode = simplifiedError?.statusCode),
+      (message = simplifiedError?.message);
   }
 
   res.status(statusCode).json({
