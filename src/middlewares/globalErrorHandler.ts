@@ -1,9 +1,9 @@
 import { ErrorRequestHandler } from "express";
+import { default as config, default as node_env } from "../config/index";
 import apiErrors from "../errors/apiErrors";
 import validationError from "../errors/validationError";
-import { default as config, default as node_env } from "../src/config/index";
-import { IGenericErrorMessage } from "../src/interfaces/error";
-import { errorLogger } from "../src/winston/logger";
+import { IGenericErrorMessage } from "../interfaces/error";
+import { errorLogger } from "../winston/logger";
 
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
   if (node_env && node_env.node_env === "development") {
