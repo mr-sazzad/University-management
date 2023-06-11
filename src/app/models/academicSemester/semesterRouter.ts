@@ -1,6 +1,6 @@
 import express from "express";
 import validateRequest from "../../../middlewares/validateRequest";
-import createUser from "../user/userController";
+import { createAcademicSemester } from "./semesterController";
 import { createAcademicSemesterZod } from "./semesterValidation";
 
 const router = express.Router();
@@ -8,7 +8,7 @@ const router = express.Router();
 router.post(
   "/createAcademicSemester",
   validateRequest(createAcademicSemesterZod),
-  createUser
+  createAcademicSemester
 );
 
 export default router;
