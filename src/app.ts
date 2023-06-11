@@ -11,6 +11,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/users/", userRouter);
 
-app.use("api/v1/academic-semester", userSemester);
+app.use("/api/v1/academic-semester", userSemester);
 
 export default app;
